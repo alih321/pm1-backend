@@ -10,11 +10,11 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Column;
 
 @Entity
-@Table(name="Apartment")
+@Table(name = "Apartment")
 public class Apartment {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer aptID;
 
     @Column
@@ -82,12 +82,12 @@ public class Apartment {
     private Complex complex;
 
     // Getter and Setter for complex
-    public Complex getComplex() {
-        return complex;
+    public int getComplexID() {
+        return complex.getComplexID();
     }
 
     public void setComplex(Complex complex) {
         this.complex = complex;
     }
-    
+
 }

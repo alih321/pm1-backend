@@ -1,3 +1,5 @@
+//./mvnw spring-boot:run
+
 package com.hachem.pm2;
 
 import jakarta.persistence.Entity;
@@ -12,16 +14,15 @@ import java.util.List;
 import jakarta.persistence.Column;
 
 @Entity
-@Table(name="Complex")
+@Table(name = "Complex")
 public class Complex {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer complexID;
 
     @Column
     private String name;
-
     @Column
     private int streetNumber;
     @Column
@@ -87,7 +88,6 @@ public class Complex {
         this.state = state;
     }
 
-
     @OneToMany(mappedBy = "complex")
     private List<Apartment> apartments;
 
@@ -99,6 +99,5 @@ public class Complex {
     public void setApartments(List<Apartment> apartments) {
         this.apartments = apartments;
     }
-
 
 }
