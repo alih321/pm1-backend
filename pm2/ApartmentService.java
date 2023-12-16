@@ -63,6 +63,11 @@ public class ApartmentService {
             apartment.setNumOfBaths(updatedApartment.getNumOfBaths());
             apartment.setRent(updatedApartment.getRent());
 
+            Optional<Complex> c = complexRepository.findById(updatedApartment.getComplexID());
+            if (c.isPresent()) {
+                apartment.setComplex(c.get());
+            }
+
             apartmentRepository.save(apartment);
             return "Apartment with ID " + id + " Updated.";
         } else {

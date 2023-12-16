@@ -63,6 +63,11 @@ public class TenantService {
             tenant.setEmail(updatedTenant.getEmail());
             tenant.setPhone(updatedTenant.getPhone());
 
+            Optional<Apartment> a = apartmentRepository.findById(updatedTenant.getApartmentID());
+            if (a.isPresent()) {
+                tenant.setApartment(a.get());
+            }
+
             tenantRepository.save(tenant);
             return "Tenant with ID " + id + " Updated.";
         } else {

@@ -90,6 +90,9 @@ public class Tenant {
     private Apartment apartment;
 
     public int getApartmentID() {
+        if (apartment == null) {
+        }
+
         return apartment.getAptID();
     }
 

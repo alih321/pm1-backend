@@ -71,6 +71,21 @@ public class OwnerService {
             owner.setPhone(updatedOwner.getPhone());
             owner.setAddress(updatedOwner.getAddress());
 
+            if (updatedOwner.getComplexes() != null) {
+                List<Complex> allComplexes = updatedOwner.getComplexes();
+                List<Complex> complexesToSet = new ArrayList<>();
+                for (Complex comp : allComplexes) {
+                    int compID = comp.getComplexID();
+                    Optional<Complex> compEnt = complexRepository.findById(compID);
+                    if (compEnt.isPresent()) {
+                        complexesToSet.add(compEnt.get());
+                    }
+                }
+                owner.setComplexes(complexesToSet);
+            } else {
+                owner.setComplexes(new ArrayList<>());
+            }
+
             ownerRepository.save(owner);
             return "Owner with ID " + id + " Updated.";
         } else {

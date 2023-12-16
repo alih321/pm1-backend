@@ -104,6 +104,10 @@ public class Complex {
     private List<Owner> owners;
 
     public List<Integer> getOwnerIDs() {
+
+        if (owners == null) {
+            return new ArrayList<>();
+        }
         List<Integer> allIDs = new ArrayList<Integer>();
 
         for (Owner o : owners) {
@@ -113,6 +117,11 @@ public class Complex {
     }
 
     public List<String> getOwnerNames() {
+
+        if (owners == null) {
+            return new ArrayList<>();
+        }
+
         List<String> allNames = new ArrayList<String>();
 
         for (Owner o : owners) {
